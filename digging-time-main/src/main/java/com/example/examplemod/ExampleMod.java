@@ -1,8 +1,12 @@
 package com.example.examplemod;
 
+import com.example.examplemod.data.ModLanguageProvider;
 import com.example.examplemod.registries.ModBlocks;
 import com.example.examplemod.registries.ModCreativeModeTabs;
 import com.example.examplemod.registries.ModItems;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -50,6 +54,7 @@ public class ExampleMod
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public ExampleMod(IEventBus modEventBus, ModContainer modContainer)
     {
+        modEventBus.addListener(this::gatherData);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -70,6 +75,15 @@ public class ExampleMod
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void gatherData(final GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput output = event.getGenerator().getPackOutput();
+        //英語
+        generator.addProvider(event.includeClient(), new ModLanguageProvider.En(output));
+        //日本語
+        generator.addProvider(event.includeClient(), new ModLanguageProvider.Ja(output));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
