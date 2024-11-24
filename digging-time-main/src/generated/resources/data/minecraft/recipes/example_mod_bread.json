@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "examplemod:coin_tier1"
+    }
+  },
+  "pattern": [
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bread"
+  }
+}
