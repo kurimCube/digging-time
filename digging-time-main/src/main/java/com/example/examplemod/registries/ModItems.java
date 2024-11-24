@@ -24,7 +24,7 @@ public class ModItems {
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
     public static final DeferredItem<LongPickaxeItem> LONG_PICKAXE = ITEMS.registerItem("long_pickaxe",
-            properties -> new LongPickaxeItem(Tiers.IRON, properties.attributes(PickaxeItem.createAttributes(Tiers.IRON, 1.0f, -2.8f))));
+            properties -> new LongPickaxeItem(5, Tiers.IRON, properties.attributes(PickaxeItem.createAttributes(Tiers.IRON, 1.0f, -2.8f))));
 
-
+    public static final DeferredItem<Item> COIN = ITEMS.registerSimpleItem("coin");
 }
