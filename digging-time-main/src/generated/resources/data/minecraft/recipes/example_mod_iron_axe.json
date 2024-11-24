@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "examplemod:coin_tier1"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_axe"
+  }
+}

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_exchangeable_blocks": {
+    "has_coin_tier1": {
       "conditions": {
         "items": [
           {
-            "items": "#examplemod:exchange_blocks"
+            "items": "examplemod:coin_tier1"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "examplemod:coin"
+        "recipe": "minecraft:example_mod_iron_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_exchangeable_blocks"
+      "has_coin_tier1"
     ]
   ],
   "rewards": {
     "recipes": [
-      "examplemod:coin"
+      "minecraft:example_mod_iron_axe"
     ]
   }
 }

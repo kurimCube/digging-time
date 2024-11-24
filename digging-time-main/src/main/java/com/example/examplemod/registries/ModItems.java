@@ -26,5 +26,7 @@ public class ModItems {
     public static final DeferredItem<LongPickaxeItem> LONG_PICKAXE = ITEMS.registerItem("long_pickaxe",
             properties -> new LongPickaxeItem(5, Tiers.IRON, properties.attributes(PickaxeItem.createAttributes(Tiers.IRON, 1.0f, -2.8f))));
 
-    public static final DeferredItem<Item> COIN = ITEMS.registerSimpleItem("coin");
+    public static final DeferredItem<Item> COIN_TIER1 = ITEMS.registerSimpleItem("coin_tier1");
+    public static final DeferredItem<Item> COIN_TIER2 = ITEMS.registerSimpleItem("coin_tier2");
+    public static final DeferredItem<Item> COIN_TIER3 = ITEMS.registerSimpleItem("coin_tier3");
 }
