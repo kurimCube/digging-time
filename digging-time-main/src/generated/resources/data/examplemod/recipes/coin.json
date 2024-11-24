@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "exchange_blocks",
+  "key": {
+    "#": {
+      "tag": "examplemod:exchange_blocks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "examplemod:coin"
+  }
+}

@@ -1,11 +1,17 @@
 package com.example.examplemod;
 
 import com.example.examplemod.data.ModLanguageProvider;
+import com.example.examplemod.data.recipes.ModRecipeProvider;
+import com.example.examplemod.data.tags.ModBlockTagsProvider;
+import com.example.examplemod.data.tags.ModItemTagsProvider;
 import com.example.examplemod.registries.ModBlocks;
 import com.example.examplemod.registries.ModCreativeModeTabs;
 import com.example.examplemod.registries.ModItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
@@ -40,6 +46,8 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.concurrent.CompletableFuture;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ExampleMod.MODID)
@@ -79,11 +87,19 @@ public class ExampleMod
 
     private void gatherData(final GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput output = event.getGenerator().getPackOutput();
+        ExistingFileHelper efh = event.getExistingFileHelper();
         //英語
         generator.addProvider(event.includeClient(), new ModLanguageProvider.En(output));
         //日本語
         generator.addProvider(event.includeClient(), new ModLanguageProvider.Ja(output));
+
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
+
+        TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new ModBlockTagsProvider(output, lookupProvider, efh));
+        generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), efh));
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

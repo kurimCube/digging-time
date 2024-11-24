@@ -12,8 +12,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class LongPickaxeItem extends PickaxeItem {
 
-    public LongPickaxeItem(Tier tier, Properties properties) {
+    private final int miningRange;
+
+    public LongPickaxeItem(int miningRange, Tier tier, Properties properties) {
         super(tier, properties);
+        this.miningRange = miningRange;
     }
 
     @Override
@@ -21,7 +24,7 @@ public class LongPickaxeItem extends PickaxeItem {
         super.mineBlock(stack, level, state, pos, miningEntity);
         if (miningEntity instanceof Player player) {
             Direction lookingDir = player.getDirection();
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < this.miningRange; i++) {
                 if (!level.getBlockState(pos.relative(lookingDir, i)).is(state.getBlock())) {
                     break;
                 }
