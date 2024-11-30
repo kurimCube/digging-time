@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "examplemod:coin_tier2"
+    }
+  },
+  "pattern": [
+    "#"
+  ],
+  "result": {
+    "count": 64,
+    "id": "minecraft:torch"
+  }
+}
