@@ -2,6 +2,7 @@ package com.example.examplemod.registries;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.world.item.LongPickaxeItem;
+import com.example.examplemod.world.item.SandWallPlacerItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,7 +27,12 @@ public class ModItems {
     public static final DeferredItem<LongPickaxeItem> LONG_PICKAXE = ITEMS.registerItem("long_pickaxe",
             properties -> new LongPickaxeItem(5, Tiers.IRON, properties.attributes(PickaxeItem.createAttributes(Tiers.IRON, 1.0f, -2.8f))));
 
+    public static final DeferredItem<SandWallPlacerItem> SAND_WALL_PLACER = ITEMS.registerItem("sand_wall_placer",
+            properties -> new SandWallPlacerItem(properties, 32));
+
     public static final DeferredItem<Item> COIN_TIER1 = ITEMS.registerSimpleItem("coin_tier1");
     public static final DeferredItem<Item> COIN_TIER2 = ITEMS.registerSimpleItem("coin_tier2");
     public static final DeferredItem<Item> COIN_TIER3 = ITEMS.registerSimpleItem("coin_tier3");
+
+
 }

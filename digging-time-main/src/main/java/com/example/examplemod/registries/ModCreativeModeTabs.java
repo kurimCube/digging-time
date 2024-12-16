@@ -19,7 +19,8 @@ public class ModCreativeModeTabs {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> ModItems.EXAMPLE_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ModItems.EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-                output.accept(ModItems.LONG_PICKAXE.get());
+                output.accept(ModItems.EXAMPLE_ITEM); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(ModItems.LONG_PICKAXE);
+                output.accept(ModItems.SAND_WALL_PLACER);
             }).build());
 }
