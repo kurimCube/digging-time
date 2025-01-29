@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.example.examplemod.data.ModLanguageProvider;
+import com.example.examplemod.data.client.ModItemModelProvider;
 import com.example.examplemod.data.recipes.ModRecipeProvider;
 import com.example.examplemod.data.tags.ModBlockTagsProvider;
 import com.example.examplemod.data.tags.ModItemTagsProvider;
@@ -8,7 +9,10 @@ import com.example.examplemod.registries.ModBlocks;
 import com.example.examplemod.registries.ModCreativeModeTabs;
 import com.example.examplemod.registries.ModDataComponentTypes;
 import com.example.examplemod.registries.ModItems;
+import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
@@ -90,6 +94,8 @@ public class ExampleMod
 
         TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new ModBlockTagsProvider(output, lookupProvider, efh));
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), efh));
+
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(output, efh));
 
     }
 
